@@ -1,4 +1,5 @@
 import React from 'react'
+import {Droppable} from 'react-beautiful-dnd'
 import Todo from './Todo';
 import styled from 'styled-components'
 
@@ -18,11 +19,23 @@ const Title = styled.h3`
   font-size: 36px;
 `
 
+const TaskList = styled.div`
+  padding: 2px;
+`
+
 export default ({col, todos}) => (
   <Container>
     <Title>{col.title}</Title>
-    {todos.map(todo => (
-      <Todo todo={todo}/>
-    ))}
+    <Droppable droppableId={col.id}>
+      {provided => (
+        <TaskList
+          ref={provided.innerRef}
+          {...provided.dropabbleProps}
+        >
+          {todos.map((todo, index) => (<Todo todo={todo} index={index} />))}
+          {provided.placeholder}
+        </TaskList>
+      )}
+    </Droppable>
   </Container>
 )
