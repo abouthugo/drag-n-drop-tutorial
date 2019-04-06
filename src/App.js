@@ -10,8 +10,33 @@ class App extends Component {
     this.state = initialState;
   }
 
-  onDragEnd = () => {
-    //TODO implement this for persistent reordering
+  onDragEnd = result => {
+    const {draggableId, source, destination} = result;
+    console.log("Result:")
+    console.log(result);
+    if(!destination) return;
+    if(source.droppableId === destination.droppableId && source.index === destination.index) return ;
+
+    console.log("Passed test");
+    // Reorder
+    const column = this.state.columns[source.droppableId];
+    const newTodos = Array.from(column.todoIds);
+    newTodos.splice(source.index, 1); // remove the item from the list
+    newTodos.splice(destination.index, 0, draggableId); // add item to the list, 0 means remove nothing
+    const newCol = {
+      ...column,
+      todoIds: newTodos
+    };
+    const newState = {
+      ...this.state,
+      columns:{
+        ...this.state.columns,
+        [newCol.id]: newCol
+      }
+    };
+
+    this.setState(newState);
+
   }
 
   render() {

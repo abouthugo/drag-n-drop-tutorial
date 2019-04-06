@@ -8,7 +8,7 @@ const Container = styled.div`
   border-radius: 4px;
   margin: 5px 0;
   background-color: #fafafa;
-  padding: 10px 10px;
+  padding: 5px 10px;
 `
 
 export default ({todo, index}) => (

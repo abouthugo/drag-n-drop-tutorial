@@ -20,7 +20,9 @@ const Title = styled.h3`
 `
 
 const TaskList = styled.div`
-  padding: 2px;
+  padding: 8px;
+  border: 1px solid white;
+  border-radius: 4px;
 `
 
 export default ({col, todos}) => (
