@@ -3,13 +3,12 @@ import Todo from './Todo';
 import styled from 'styled-components'
 
 const Container = styled.div`
+  font-family: Helvetica;
+  display: inline-block;
   border: 1px solid black;
-  border-radius: 2px;
-  padding: 5px;
-  width: 50%;
-  margin: 0 auto;
-  text-align: center;
-  background-color: tomato;
+  border-radius: 4px;
+  padding: 5px 20px;
+  background-color: black;
 `
 
 const Title = styled.h3`
